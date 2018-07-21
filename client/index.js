@@ -42,9 +42,9 @@ store.subscribeAction((action, state) => {
 })
 
 
-
-const root = document.createElement('div')
-document.body.appendChild(root)
+// 创建dom节点、
+// const root = document.createElement('div')
+// document.body.appendChild(root)
 
 //路由守卫
 router.beforeEach((to, from, next) => {
