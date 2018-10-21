@@ -20,15 +20,10 @@
 </template>
 
 <script>
-import {
-  mapState,
-  mapGetters,
-  mapActions,
-  mapMutations
-} from 'vuex'
-import Header from './layout/header.vue'
-import Footer from './layout/footer.jsx'
-import Todo from './views/todo/todo.vue'
+import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
+import Header from "./layout/header.vue";
+import Footer from "./layout/footer.jsx";
+import Todo from "./views/todo/todo.vue";
 
 // console.log(Header.__docs)
 
@@ -36,11 +31,11 @@ export default {
   components: {
     Header,
     Footer,
-    Todo,
+    Todo
   },
-  mounted () {
-    console.log(this.$route,this.$store)
-    let i=1  
+  mounted() {
+    console.log(this.$route, this.$store);
+    let i = 1;
     // setInterval(() => {
     //   // this.$store.commit('updateCount', i++)
     //   // this.$store.commit('updateCount',{num:i++,num2:2})
@@ -52,48 +47,42 @@ export default {
     //   })
     // }, 1000)
 
-
     // this.$store.dispatch('updateCountAsync',{
     //   num:5,
     //   time:2000
     // })
-    this.updateCountAsync({
-      num:5,
-      time:2000
-    },1000)
+    this.updateCountAsync(
+      {
+        num: 50,
+        time: 2000
+      },
+      1000
+    );
 
-    this['a/updateText']('123')
-    this['a/add']()
-    this['b/testAction']()
-
-    
+    this["a/updateText"]("123");
+    this["a/add"]();
+    this["b/testAction"]();
   },
   methods: {
-    ...mapActions(['updateCountAsync','a/add','b/testAction']),
-    ...mapMutations(['updateCount','a/updateText']),
+    ...mapActions(["updateCountAsync", "a/add", "b/testAction"]),
+    ...mapMutations(["updateCount", "a/updateText"])
   },
   computed: {
-    ...mapState([
-      'count'
-      
-      ]),
+    ...mapState(["count"]),
     ...mapState({
-      counter: 'count'
+      counter: "count"
     }),
     ...mapState({
-      counter2: (state) => state.count++,
+      counter2: state => state.count++,
       textB: state => state.b.text,
       textC: state => state.c.text
     }),
 
-
-
     ...mapGetters({
-      'fullName': 'fullName',
-      'textPlus':'a/textPlus',
-
+      fullName: "fullName",
+      textPlus: "a/textPlus"
     }),
-    ...mapGetters(['a/textPlus']),
+    ...mapGetters(["a/textPlus"]),
 
     // count () {
     //   return this.$store.state.count
@@ -102,35 +91,31 @@ export default {
     //   return this.$store.getters.fullName
     // }
 
-    textA () {
-      return this.$store.state.a.text
+    textA() {
+      return this.$store.state.a.text;
     }
-    
-
   }
-
-
-
-}
+};
 </script>
 
 <style lang="stylus" scoped>
-#app{
-  position absolute
-  left 0
-  right 0
-  top 0
-  bottom 0
+#app {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
-#cover{
-  position absolute
-  left 0
-  top 0
-  right 0
-  bottom 0
-  background-color #999
-  opacity .9
-  z-index -1
+
+#cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+  opacity: 0.9;
+  z-index: -1;
 }
 </style>
 
